@@ -7,6 +7,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
+  target: "browserslist",
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -41,9 +42,14 @@ module.exports = merge(common, {
         use: ["babel-loader", "ts-loader"],
       },
       {
-        test: /\.(s[ac]|c)?ss$/i,
+        test: /\.(s[ac]|c)ss$/i,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
     ],
   },

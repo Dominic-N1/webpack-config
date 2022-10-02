@@ -4,6 +4,7 @@ const path = require("path");
 
 module.exports = merge(common, {
   mode: "development",
+  target: "web",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -11,7 +12,10 @@ module.exports = merge(common, {
   },
   module: {
     rules: [
-      { test: /\.s?css$/i, use: ["style-loader", "css-loader", "sass-loader"] },
+      {
+        test: /\.(s[ac]|c)ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
 });
@@ -42,7 +46,7 @@ module.exports = merge(common, {
       {
         test: /\.(s[ac]|c)?ss$/i,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
     ],
   },

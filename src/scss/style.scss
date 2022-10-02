@@ -1,1 +1,9 @@
 @use "global";
+
+button {
+  display: flex;
+  text-align: center;
+  p {
+    font-style: italic;
+  }
+}
